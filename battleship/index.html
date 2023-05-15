@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kill Enemy Submarines</title>
+    <link rel="icon" href="submarine.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+    <style>
+      h1 {
+        color: rgb(255, 46, 46);
+        font-size: 3vw;
+        font-family: Mukta;
+      }
+      body {
+        background-image: url(bg.jpg);
+        /* background-size: 100vw; */
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .board {
+        background-image: url(ocean.jpg);
+        background-size: cover;
+        width: 70vw;
+        height: 70vh;
+        max-height: 400px;
+        border: 3px solid blue;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+      }
+      .box {
+        border: 1.7px solid red;
+      }
+    </style>
+    <!-- <script>
+      var randoml = Math.random();
+      var location1 = "3";
+      var location2 = "4";
+      var loaction3 = "5";
+      var guess;
+      var hits = 0;
+      var guesses = 0;
+      var isSunk = 0;
+      while (isSunk == false) {
+        inp = prompt("Attack!(valid inputs: 0-6)");
+        inp = String(inp)
+        if (["0", "1", "2", "3","4","5", "6"].includes(inp)) {
+          if ([loaction3, location1, location2].includes(inp)) {
+              hits = hits + 1;
+              guesses = guesses + 1;
+              if (hits >= 3) {
+                isSunk = true
+                  alert("You won the game!")
+                }
+                alert("A ship got hited!");
+          } else {
+            guesses = guesses + 1;
+            alert("Missed!")
+          }
+        } else {
+          alert("Invalid Input!");
+        }
+      }
+      var stats = "You took " + guesses + " guesses to sink the battleship," + " accuracy;" + (3/guesses)*100 + "%"
+      alert(stats)
+    </script> -->
+  </head>
+  <body>
+    <h1>Kill All Enemy Submarines</h1>
+    <div class="board">
+      <div class="1 box"></div>
+      <div class="2 box"></div>
+      <div class="3 box"></div>
+      <div class="4 box"></div>
+      <div class="5 box"></div>
+      <div class="6 box"></div>
+      <div class="7 box"></div>
+      <div class="8 box"></div>
+      <div class="9 box"></div>
+      <div class="10 box"></div>
+      <div class="11 box"></div>
+      <div class="12 box"></div>
+      <div class="13 box"></div>
+      <div class="14 box"></div>
+      <div class="15 box"></div>
+      <div class="16 box"></div>
+      <div class="17 box"></div>
+      <div class="18 box"></div>
+      <div class="19 box"></div>
+      <div class="20 box"></div>
+      <div class="21 box"></div>
+      <div class="22 box"></div>
+      <div class="23 box"></div>
+      <div class="24 box"></div>
+      <div class="25 box"></div>
+    </div>
+  </body>
+</html>
