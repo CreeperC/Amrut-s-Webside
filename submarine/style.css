@@ -8,9 +8,17 @@
   font-family: Mukta;
 }
 .subheads {
-    color: brown;
+    color: rgb(255, 35, 35);
     font-size: 2vw;
     font-family: Mukta;
+    margin: 1px;
+}
+.submarinelihead{
+  color: rgb(201, 0, 0);
+  font-size: 1.7vw;
+  font-family: Mukta;
+  overflow: hidden;
+  padding-left: 2vw;
 }
 body {
   background-image: url(images/bg.jpg);
@@ -35,7 +43,7 @@ body {
   grid-template-columns: 14vw 14vw 14vw 14vw 14vw;
   grid-template-rows: 7.5em 7.5em 7.5em 7.5em 7.5em;
 }
-.submarineli {
+#submarineli {
     border: 2px solid black;
     width: 15vw;
     height: 120vh;
@@ -79,6 +87,10 @@ body {
   overflow: hidden;
 }
 .submarine {
+  width: 14vw;
+  height: 14vh;
+}
+.submarineside {
   width: 14vw;
   height: 14vh;
 }

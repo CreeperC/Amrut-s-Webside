@@ -28,7 +28,12 @@ function resethitmation(boxno) {
   var i = document.getElementById(boxno);
   i.innerHTML = '<img src="images/cross.png" class="aim">';
 }
-
+function setsubmarineli(){
+  let noOfSubs;
+  for (i of Object.values(locationsOfEnemy)){
+    if (document.get)
+  }
+}
 function setmissiles(){
   let noOfMissiles = 17 - gueses
   let str ='<h2 class="subheads"> '+noOfMissiles + " missiles left " + "</h2>";
