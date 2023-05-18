@@ -102,7 +102,6 @@
         var i = document.getElementById(boxno);
         i.innerHTML = '<img src="images/cross.png" class="aim">';
       }
-
       function Gameover(win = false) {
         if (win == false) {
           for (i of Object.values(locationsOfEnemy)) {
@@ -131,13 +130,13 @@
           document.getElementById(boxno).innerHTML = "";
           new Audio("audios/blast.mp3").play();
           document.getElementById(boxno).innerHTML =
-            '<img src="images/blast.gif" class="blast">';
+          '<img src="images/blast.gif" class="blast">';
           setTimeout(() => {
             document.getElementById(boxno).innerHTML =
-              '<img src="images/submarineD.png" class="submarine">';
+            '<img src="images/submarineD.png" class="submarine">';
           }, 1000);
           setmissiles();
-          setsubmarineli();
+          setsubmarineli(hits);
           if (checkwin()) {
             Gameover(true);
           }
@@ -149,32 +148,25 @@
           new Audio("audios/blast.mp3").play();
           boxno = String(boxno);
           document.getElementById(boxno).innerHTML =
-            '<img src="images/blast.gif" class="blast">';
+          '<img src="images/blast.gif" class="blast">';
           setTimeout(() => {
             document.getElementById(boxno).innerHTML =
-              '<img src="images/cross.png" class="aim">';
+            '<img src="images/cross.png" class="aim">';
           }, 1000);
           setmissiles();
-          setsubmarineli();
+          setsubmarineli(hits);
           if (gueses >= 17) {
             Gameover();
           }
         }
       }
-      function setsubmarineli() {
-        let noOfSubs = 0;
-        for (i of Object.values(locationsOfEnemy)) {
-          if (
-            document.getElementById(`${i}`).innerHTML !=
-            '<img src="images/submarineD.png" class="submarine">'
-            ) {
-              noOfSubs += 1;
-            } else {
-              null;
-            }
-          }
-          let str =
-          '<h3 class="submarinelihead">' + noOfSubs + " Submarines left" + "</h3>";
+      function setsubmarineli(hits) {
+        let noOfSubs = 6 - hits;
+        let str =
+          '<h3 class="submarinelihead">' +
+          noOfSubs +
+          " Submarines left" +
+          "</h3>";
         for (let co = noOfSubs; co > 0; co--) {
           str = str + '<img src="images/submarine1.png" class="submarineside">';
         }
@@ -191,7 +183,7 @@
       }
 
       setmissiles();
-      setsubmarineli();
+      setsubmarineli(hits);
       // Event listeners
       // 1
       no1 = document.getElementById("1");
