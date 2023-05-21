@@ -24,37 +24,48 @@ var hits = 0;
 var gueses = 0;
 
 // Intraction functions
+function checkwin() {
+  stillwin = true;
+  cou = 0;
+  for (i of Object.values(locationsOfEnemy)) {
+    if (i == "seventh") {
+      continue;
+    }
+    if (
+      document.getElementById(i).innerHTML ==
+      '<img src="images/submarineD.png" class="submarine">'
+    ) {
+      null;
+    } else {
+      if (cou >= 1) {
+        stillwin = false;
+      } else {
+        cou += 1;
+      }
+    }
+  }
+  return stillwin;
+}
 function resethitmation(boxno) {
   var i = document.getElementById(boxno);
   i.innerHTML = '<img src="images/cross.png" class="aim">';
 }
-function setsubmarineli(){
-  let noOfSubs;
-  for (i of Object.values(locationsOfEnemy)){
-    if (document.get)
-  }
-}
-function setmissiles(){
-  let noOfMissiles = 17 - gueses
-  let str ='<h2 class="subheads"> '+noOfMissiles + " missiles left " + "</h2>";
-  let missilebox = document.getElementById("missilebox")
-  for (let co = noOfMissiles;co>0;co--){
-    str = str + '<img src="images/missile.png" class="missiles">'
-  }
-
-  missilebox.innerHTML = str
-}
-
-function Gameover() {
-  for (i of Object.values(locationsOfEnemy)) {
-    if (i.innerHTML != "" || i.innerHTML != null) {
-      gameover = true;
-      continue;
+function Gameover(win = false) {
+  if (win == false) {
+    for (i of Object.values(locationsOfEnemy)) {
+      if (i.innerHTML != "" || i.innerHTML != null) {
+        gameover = true;
+        continue;
+      }
+      var ele = document.getElementById(i);
+      ele.innerHTML =
+        '<img src="images/submarine.png" class="submarine">';
     }
-    var ele = document.getElementById(i);
-    ele.innerHTML = '<img src="images/submarine.png" class="submarine">';
+    document.getElementById("progress").innerHTML = "Game Over!";
+  } else {
+    document.getElementById("progress").innerHTML = "You Won!";
+    gameover = true;
   }
-  document.getElementById("progress").innerHTML = "Game Over!";
 }
 
 function attackbox(boxno) {
@@ -67,12 +78,16 @@ function attackbox(boxno) {
     document.getElementById(boxno).innerHTML = "";
     new Audio("audios/blast.mp3").play();
     document.getElementById(boxno).innerHTML =
-      '<img src="images/blast.gif" class="blast">';
+    '<img src="images/blast.gif" class="blast">';
     setTimeout(() => {
       document.getElementById(boxno).innerHTML =
-        '<img src="images/submarineD.png" class="submarine">';
+      '<img src="images/submarineD.png" class="submarine">';
     }, 1000);
-    setmissiles()
+    setmissiles();
+    setsubmarineli(hits);
+    if (checkwin()) {
+      Gameover(true);
+    }
     if (gueses >= 17) {
       Gameover();
     }
@@ -81,20 +96,42 @@ function attackbox(boxno) {
     new Audio("audios/blast.mp3").play();
     boxno = String(boxno);
     document.getElementById(boxno).innerHTML =
-      '<img src="images/blast.gif" class="blast">';
+    '<img src="images/blast.gif" class="blast">';
     setTimeout(() => {
       document.getElementById(boxno).innerHTML =
-        '<img src="images/cross.png" class="aim">';
+      '<img src="images/cross.png" class="aim">';
     }, 1000);
-    setmissiles()
+    setmissiles();
+    setsubmarineli(hits);
     if (gueses >= 17) {
       Gameover();
     }
   }
 }
+function setsubmarineli(hits) {
+  let noOfSubs = 6 - hits;
+  let str =
+    '<h3 class="submarinelihead">' +
+    noOfSubs +
+    " Submarines left" +
+    "</h3>";
+  for (let co = noOfSubs; co > 0; co--) {
+    str = str + '<img src="images/submarine1.png" class="submarineside">';
+  }
+  document.getElementById("submarineli").innerHTML = str;
+}
+function setmissiles() {
+  let noOfMissiles = 17 - gueses;
+  let str =
+    '<h2 class="subheads"> ' + noOfMissiles + " missiles left " + "</h2>";
+  for (let co = noOfMissiles; co > 0; co--) {
+    str = str + '<img src="images/missile.png" class="missiles">';
+  }
+  document.getElementById("missilebox").innerHTML = str;
+}
 
-setmissiles()
-
+setmissiles();
+setsubmarineli(hits);
 // Event listeners
 // 1
 no1 = document.getElementById("1");
